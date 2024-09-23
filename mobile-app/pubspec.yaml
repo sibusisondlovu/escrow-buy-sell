@@ -20,6 +20,8 @@ dependencies:
   flutter_spinkit: ^5.2.1
   pinput: ^4.0.0
   awesome_dialog: ^3.2.1
+  agora_rtc_engine: ^6.0.0
+  permission_handler: ^11.3.1
   webview_flutter: ^4.9.0
   flutter_rating_bar:
 
@@ -27,7 +29,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^4.0.0
+  flutter_lints: ^3.0.2
   flutter_launcher_icons: "^0.13.1"
 
 flutter:

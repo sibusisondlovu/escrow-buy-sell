@@ -4,6 +4,8 @@ import '../ui/screens/main_layout_screen.dart';
 import '../ui/screens/onboarding_screen.dart';
 import '../ui/screens/payfast_screen.dart';
 import '../ui/screens/product_detail_screen.dart';
+import '../ui/screens/purchase_history_screen.dart';
+import '../ui/screens/transaction_progress_screen.dart';
 import '../wrapper.dart';
 
 class RouteGenerator {
@@ -28,6 +30,12 @@ class RouteGenerator {
 
       case PayFastWebView.id:
         return _route(PayFastWebView(uri: args.toString()));
+
+      case TransactionProgressScreen.id:
+        return _route(TransactionProgressScreen(transaction: args,));
+
+      case PurchaseHistoryScreen.id:
+        return _route(const PurchaseHistoryScreen());
 
       default:
         return _errorRoute(settings.name);

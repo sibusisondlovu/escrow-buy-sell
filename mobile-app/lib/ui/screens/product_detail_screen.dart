@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-
 import '../../models/product_model.dart';
+import 'video_chat_screen.dart';
 
 class ProductDetailScreen extends StatefulWidget {
   const ProductDetailScreen({super.key, required this.product});
@@ -13,6 +13,11 @@ class ProductDetailScreen extends StatefulWidget {
 }
 
 class _ProductDetailScreenState extends State<ProductDetailScreen> {
+
+  final String  appId = "7a48ddd373904306aa9748fa578ba1a1";
+  final String token = "007eJxTYFDuZl1yOpnP993lhr7/RyecjfGTm5S++PCppi0eXKqTF4QoMJgnmlikpKQYmxtbGpgYG5glJlqam1ikJZqaWyQlGiYaTrryLK0hkJHhYNJ+VkYGCATxORicSisVglNzchgYAAeNIfE=";
+  final String channel = "Buy Sell";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +51,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   const SizedBox(height: 10),
                   // Product Price
                   Text(
-                    "\$${widget.product.price.toStringAsFixed(2)}",
+                    "R ${widget.product.price.toStringAsFixed(2)}",
                     style: const TextStyle(
                       color: Colors.green,
                       fontSize: 20,
@@ -94,7 +99,16 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                   // Start Chat with Seller Button
                   ElevatedButton.icon(
                     onPressed: () {
-                      // TODO: Open chat screen with seller
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => VideoChatScreen(
+                            channelName: channel,
+                            appId: appId,
+                            token: token,
+                          ),
+                        ),
+                      );
                     },
                     icon: const Icon(Icons.chat),
                     label: const Text('Start Chat with Seller'),

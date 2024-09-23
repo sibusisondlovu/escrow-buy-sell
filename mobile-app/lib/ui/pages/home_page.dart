@@ -77,10 +77,10 @@ class _HomePageState extends State<HomePage> {
                     product.title,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 16,
+                      fontSize: 13,
                     ),
                   ),
-                  Text("\$${product.price.toStringAsFixed(2)}"),
+                  Text("R ${product.price.toStringAsFixed(2)}"),
                 ],
               ),
             ),
@@ -135,7 +135,7 @@ class _HomePageState extends State<HomePage> {
                                 product.seller,
                                 style: const TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  fontSize: 14,
+                                  fontSize: 10,
                                 ),
                               ),
                               // Rating Bar (use flutter_rating_bar package)
@@ -178,12 +178,12 @@ class _HomePageState extends State<HomePage> {
                                       product.title,
                                       style: const TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 16,
+                                        fontSize: 14,
                                         color: Colors.white,
                                       ),
                                     ),
                                     Text(
-                                      "\$${product.price.toStringAsFixed(2)}",
+                                      "R ${product.price.toStringAsFixed(2)}",
                                       style: const TextStyle(
                                         color: Colors.green,
                                         fontSize: 14,

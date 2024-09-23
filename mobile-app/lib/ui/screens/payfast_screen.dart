@@ -4,6 +4,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:mobile_app/config/theme.dart';
+import 'package:mobile_app/data/transaction_data.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class PayFastWebView extends StatefulWidget {
@@ -24,7 +25,7 @@ class _PayFastWebViewState extends State<PayFastWebView> {
     if (mounted) {
       setState(() {
         if (url.contains("https://jaspagroup.co.za/payfast/success.html")) {
-          Navigator.pushNamed(context, "paymentSuccessScreen");
+          Navigator.pushNamed(context, "transactionProgressScreen", arguments: transactions[3]);
         } else if (url
             .contains("https://jaspagroup.co.za/payfast/cancel.html")) {
           Navigator.pushNamed(context, "paymentCancelledScreen");
@@ -43,7 +44,7 @@ class _PayFastWebViewState extends State<PayFastWebView> {
             // Update loading bar.
           },
           onUrlChange: (url) {
-            //_onUrlChange(url.toString());
+            _onUrlChange(url.toString());
           },
           onPageStarted: (String url) {
             setState(() {
@@ -54,17 +55,22 @@ class _PayFastWebViewState extends State<PayFastWebView> {
             setState(() {
               _isLoading = false;
             });
+
+            if (url == 'https://jaspagroup.co.za/payfast/success.html') {
+              Navigator.pushNamed(context, "transactionProgressScreen", arguments: transactions[3]);
+
+            }
           },
           onHttpError: (HttpResponseError error) {
-            AwesomeDialog(
-              context: context,
-              dialogType: DialogType.error,
-              title: 'Error',
-              desc: error.response?.statusCode.toString(),
-            ).show();
-            setState(() {
-              _isLoading = false;
-            });
+            // AwesomeDialog(
+            //   context: context,
+            //   dialogType: DialogType.error,
+            //   title: 'Error',
+            //   desc: error.response?.statusCode.toString(),
+            // ).show();
+            // setState(() {
+            //   _isLoading = false;
+            // });
           },
           onNavigationRequest: (NavigationRequest request) {
             // Removed for testing with google.com
